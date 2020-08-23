@@ -37,7 +37,6 @@ function generatePassword() {
   var passwordLength = prompt("How long would you like your password to be? Please choose a number between 8 and 128.");
   passwordLength = parseInt(passwordLength)
   while (passwordLength === "" || passwordLength === null || passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
-    // add passwordLenth = NOT A NUMBER
     console.log(passwordLength);
     passwordLength = prompt("That's not a valid option. Please choose a number between 8 and 128.")
   }
@@ -59,7 +58,7 @@ function generatePassword() {
 
   //array of GUARANTEED characters (must include these based on user's answers to confirm questions)
   var guaranteedChars = [];
-
+  //array of possible characters to include after guaranteed
   var possibleChars = [];
 
   if (lowerCaseConfirm) {
@@ -85,16 +84,16 @@ function generatePassword() {
     guaranteedChars.push(getSpecial);
   }
 
-  console.log(possibleChars)
-
   //array of guaranteed AND all possible characters
   var password = guaranteedChars;
   
   var totalLength = passwordLength - guaranteedChars.length
+
   // for loop to grab the rest of the characters from possibleChars array, randomly
   for (var j = 0; j < totalLength; j++) {
     password.push(getRandom(possibleChars))
   }
+  
   var finalPassword = ""
   for (var i=0; i < password.length; i++) {
     finalPassword = finalPassword + password[i]

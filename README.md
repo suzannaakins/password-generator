@@ -38,9 +38,9 @@ Here is a preview of the page: ![final webpage product](./images/finalpage.png)
 
 Here's the prompt for the length: ![length prompt](./images/lengthprompt.png)
 
-A character type prompt: ![character prompt](./images.charactertype.png)
+A character type prompt: ![character prompt](./images/charactertype.png)
 
-And the resulting, randomized password!  I chose to include all four character types. ![password result](./images.finalpassword.png)
+And the resulting, randomized password!  I chose to include all four character types. ![password result](./images/finalpassword.png)
 
 And, you may view the page here: https://suzannaakins.github.io/password-generator/
 

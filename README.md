@@ -20,7 +20,7 @@ As for the possible characters, we need to inclue the arrays of the character ty
 
 Next, I set the variable password to equal the guaranteed characters array. Then I set the total length of the final password to be equal to the password length that they chose, minus the number of items in the guaranteed characters array (this is so that when the for loops starts, the computer doesn't add the number they chose amount of possible characters, because then the password will be too long once the guaranteed characters are also included).
 
-After that, I have a for loop that randomly selects characters from the possible charactes array, and pushes them to the password variable array.  To turn this array into a string, I created another for loop that adds the items in the array to return a final password. 
+After that, I have a for loop that randomly selects characters from the possible charactes array, and pushes them to the password variable array.  Then there is a shuffle function, which I found on Stack Overflow, which I used to shuffle the password array so that the "guaranteed characters" weren't right at the start. To turn this shuffled array into a string, I created another for loop that adds the items in the array to return a final password. 
 
 The event listener runs the function when the "Generate" button is clicked, and voila! You're all set, with your customized, random password.  Let's get super secure!
 

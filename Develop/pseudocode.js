@@ -21,4 +21,5 @@ if (lowerCase) {
 // do math.Random from ALL the possible characters array, and add those to the password result
 //return the result
 
+//shuffle the result so the guaranteed characters aren't all at the front
 

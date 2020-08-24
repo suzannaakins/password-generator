@@ -13,10 +13,6 @@ var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 var specialChar = ["+", "-", "&", "|", "!", "(", ")", "{", "}", "[", "]", "^",
   "~", "*", "?", ":", "\""];
 
-// //array for ALL possible characters
-// var possible = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "+", "-", "&", "|", "!", "(", ")", "{", "}", "[", "]", "^",
-//   "~", "*", "?", ":", "\""];
-
 //function to get a random item from an array
 var getRandom = function(x) {
   var random = x[Math.floor(Math.random() * x.length)]
@@ -24,11 +20,8 @@ var getRandom = function(x) {
 }
 
 var getLower = getRandom(lowerCase)
-
 var getUpper = getRandom(upperCase)
-
 var getNumber = getRandom(number)
-
 var getSpecial = getRandom(specialChar)
 
 // write Generate Password Function
@@ -48,6 +41,7 @@ function generatePassword() {
   var numberConfirm = confirm("Would you like numbers included in your password?");
   var specialConfirm = confirm("Would you like special characters included in your password?");
 
+  //make sure user selects at least one type of char
   while ((!lowerCaseConfirm) && (!upperCaseConfirm) && (!numberConfirm) && (!specialConfirm)) {
     alert("You need to choose at least one option. Thank you!")
     var lowerCaseConfirm = confirm("Would you like lowercase letters included in your password?");
@@ -58,33 +52,28 @@ function generatePassword() {
 
   //array of GUARANTEED characters (must include these based on user's answers to confirm questions)
   var guaranteedChars = [];
+  
   //array of possible characters to include after guaranteed
   var possibleChars = [];
-
+  //if statements to build possible char array based on users answers to character type confirms
   if (lowerCaseConfirm) {
     possibleChars = possibleChars.concat(lowerCase);
     guaranteedChars.push(getLower);
   }
-
-  //ask if user want uppercase letters
   if (upperCaseConfirm) {
     possibleChars = possibleChars.concat(upperCase);
     guaranteedChars.push(getUpper);
   }
-
-  //ask if user wants numbers
   if (numberConfirm) {
     possibleChars = possibleChars.concat(number);
     guaranteedChars.push(getNumber);
   }
-
-  //ask if user wants special characters
   if (specialConfirm) {
     possibleChars = possibleChars.concat(specialChar);
     guaranteedChars.push(getSpecial);
   }
 
-  //array of guaranteed AND all possible characters
+  //password currently set to the guaranteed characters array
   var password = guaranteedChars;
   
   var totalLength = passwordLength - guaranteedChars.length
@@ -94,7 +83,7 @@ function generatePassword() {
     password.push(getRandom(possibleChars))
   }
 
-  //shuffle password array so guaranteed chars aren't right at the front
+  //function to shuffle arrays
   function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
   
@@ -113,26 +102,23 @@ function generatePassword() {
   
     return array;
   }
-  
+
+  //shuffle password array so guaranteed chars aren't right at the front
   shuffle(password);
-  
+
+  //change password array into a string
   var finalPassword = ""
   for (var i=0; i < password.length; i++) {
     finalPassword = finalPassword + password[i]
   }
 
-  // to add them together you do guaranteedChars.concat(possibleChars);
-  // join array, look up array join for javascript
+  //show user the password
   return finalPassword;
 };
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  //based on answers, write functions to retrieve random values for criteria by using Math.random
-
-  //display alert the password
-  //}
 
   var passwordText = document.querySelector("#password");
 

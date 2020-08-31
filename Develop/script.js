@@ -14,7 +14,7 @@ var specialChar = ["+", "-", "&", "|", "!", "(", ")", "{", "}", "[", "]", "^",
   "~", "*", "?", ":", "\""];
 
 //function to get a random item from an array
-var getRandom = function(x) {
+var getRandom = function (x) {
   var random = x[Math.floor(Math.random() * x.length)]
   return random;
 }
@@ -30,10 +30,8 @@ function generatePassword() {
   var passwordLength = prompt("How long would you like your password to be? Please choose a number between 8 and 128.");
   passwordLength = parseInt(passwordLength)
   while (passwordLength === "" || passwordLength === null || passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
-    console.log(passwordLength);
     passwordLength = prompt("That's not a valid option. Please choose a number between 8 and 128.")
   }
-  console.log("Password length will be " + passwordLength + " characters long.")
 
   //ask if user wants lowercase letters 
   var lowerCaseConfirm = confirm("Would you like lowercase letters included in your password?");
@@ -52,7 +50,7 @@ function generatePassword() {
 
   //array of GUARANTEED characters (must include these based on user's answers to confirm questions)
   var guaranteedChars = [];
-  
+
   //array of possible characters to include after guaranteed
   var possibleChars = [];
   //if statements to build possible char array based on users answers to character type confirms
@@ -75,7 +73,7 @@ function generatePassword() {
 
   //password currently set to the guaranteed characters array
   var password = guaranteedChars;
-  
+
   var totalLength = passwordLength - guaranteedChars.length
 
   // for loop to grab the rest of the characters from possibleChars array, randomly
@@ -86,20 +84,20 @@ function generatePassword() {
   //function to shuffle arrays
   function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-  
+
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-  
+
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-  
+
       // And swap it with the current element.
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-  
+
     return array;
   }
 
@@ -108,7 +106,7 @@ function generatePassword() {
 
   //change password array into a string
   var finalPassword = ""
-  for (var i=0; i < password.length; i++) {
+  for (var i = 0; i < password.length; i++) {
     finalPassword = finalPassword + password[i]
   }
 
